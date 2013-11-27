@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+		<meta charset="UTF-8">
+		<title>Frisbee toernooi app</title>		
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/style.css" rel="stylesheet">
+
+	</head>
+	<body>
+		<header id="header">
+			<h1>Frisbee toernooi app</h1>
+				<nav>
+					<ul>
+						<li><a href="#/games">Games</a></li>
+						<li><a href="#/rankings">Rankings</a></li>
+					</ul>
+				</nav>
+		</header>
+		
+		
+		<div id="loader"></div>
+
+		
+		<div id="content">			
+			<section data-route="games">
+
+				<div data-bind="data">			
+					<div data-bind="objects">
+						<h3 id="poolBtn"><a data-bind="name"></a></h3>
+					</div>
+				</div>
+			</section>
+			
+			<section data-route="pool" class="row">
+				<div data-bind="data">		
+						<h1 data-bind="name"></h1>
+
+					<table class="scoret">
+						
+						<tbody data-bind="objects">
+							<tr>
+								<td id="score1" data-bind="team_1_score"></td>
+								<td id="" data-bind="team_1"><span data-bind="name"></span></td>
+							</tr>
+							<tr>	
+								<td id="score2" data-bind="team_2_score"></td>
+								<td id="" data-bind="team_2"><span data-bind="name"></span></td>
+								<td><a id="updateBtn" data-bind="update"><img src="css/pencil.png" alt=""></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+
+			<section data-route="rankings">
+				<h1>Rankings</h1>
+
+			<div data-bind="data">			
+				<div data-bind="objects">
+
+					<table>
+						<thead>	
+							<tr>
+								<th>Team</td>
+								<th>Winst</th>
+								<th>Verlies</th>
+								<th>Goals</th>
+								<th>P</th>
+								<th>+/-</th>
+							</tr>
+						</thead>
+						<tbody data-bind="standings">
+							<tr data-bind="team">
+								<td data-bind="name"></td>
+								<td data-bind="wins"></td>
+								<td data-bind="losses"></td>
+								<td data-bind="points_scored"></td>
+								<td data-bind="points_allowed"></td>
+								<td data-bind="plus_minus"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			</section>
+			
+			
+			<section data-route="game">
+				<div data-bind="data">		
+						<h1><span data-bind="team_1"><span data-bind="name"></span></span> - <span data-bind="team_2"><span data-bind="name"></span></span></h1>
+
+
+					<form  method="post" id="update-score-form" onsubmit="return APP.page.submit();">
+						<div class="form-group">
+							<input type="hidden" id="id">
+							<div data-bind="pool">
+								<input type="hidden" id="pool_id">
+							</div>
+							<input type="number" id="team_1_score" style="float:; margin:;height: 100px; font-size: 40px; width: 45%;">
+							<input type="number" id="team_2_score" style="height: 100px; font-size: 40px; width: 45%;">
+						</div>
+						<div class="form-group">
+							<button type="submit">Opslaan</button>
+						</div>
+						
+					</form>
+				</div>
+			</section>
+		
+			
+		</div>
+	
+		<!-- Libraries -->
+		<script type="text/javascript" src="js/ready.min.js"></script>
+		<script type="text/javascript" src="js/qwery.min.js"></script>
+		<script type="text/javascript" src="js/transparancy.min.js"></script>
+		<script type="text/javascript" src="js/quo.js"></script>
+		<script type="text/javascript" src="js/routie.min.js"></script>
+		
+		<!-- GAMEAPP -->
+		<script type="text/javascript" src="js/app.js"></script>		
+	</body>
+</html>
